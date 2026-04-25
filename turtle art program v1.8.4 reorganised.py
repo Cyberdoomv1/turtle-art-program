@@ -46,7 +46,7 @@ def fillcolour():
     except:
         print("Unknown colour")
         
-def startfil():
+def startfill():
     turtle.begin_fill()
     print("Fill started")
 
@@ -422,7 +422,7 @@ def text():
         print(e)
 
 
-def executing():
+def execute():
     if command == "execute":
         try:
             exec(rawinput[8:])
@@ -455,47 +455,20 @@ def filecode():
     except Exception as e:
         print("bad file, may be typo or missing file")
         print(e)
+        
+#def filecommand():
+    
 
 def quitt():
     play = False
     print("Bye")
     turtle.bye()
     
-def do_command()
-
-
-while play:
+def do_command():
     try:
-            #is where commands are input
-        rawinput = input("Command: ").lower()
-        empty = rawinput
-        if empty[-1] == " ":
-            empty = empty[0:-1]
-        if empty[0] == " ":
-            empty = empty[1:]
-
-        args = empty.split(",")
-        if len(args) == 1:
-            command = empty
-            empty = ""
-        elif len(args) == 2:
-            command,empty = empty.split(",")
-        elif len(args) == 3:
-            command,empty,empty2 = empty.split(",")
-        elif len(args) == 4:
-            command,empty,empty2,empty3 = empty.split(",")
-        elif len(args) == 5:
-            command,empty,empty2,empty3,empty4 = empty.split(",")
-        elif len(args) == 6:
-            command,empty,empty2,empty3,empty4,empty5 = empty.split(",")
-        elif len(args) == 7:
-            command,empty,empty2,empty3,empty4,empty5,empty6 = empty.split(",")
-        else:
-            print("Too many inputs")
-
-#-------------------------------------------------------------------------#
-#colour stuff
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #colour stuff
+        #-------------------------------------------------------------------------#
 
             #sets colour
         if command in("c","colour","color","rgb"):
@@ -520,9 +493,9 @@ while play:
 
 
 
-#-------------------------------------------------------------------------#
-#movement stuff
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #movement stuff
+        #-------------------------------------------------------------------------#
 
 
 
@@ -564,9 +537,9 @@ while play:
 
 
 
-#-------------------------------------------------------------------------#
-#information stuff
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #information stuff
+        #-------------------------------------------------------------------------#
 
 
 
@@ -591,9 +564,9 @@ while play:
 
 
 
-#-------------------------------------------------------------------------#
-#turtle stuff
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #turtle stuff
+        #-------------------------------------------------------------------------#
 
 
 
@@ -616,9 +589,9 @@ while play:
 
 
 
-#-------------------------------------------------------------------------#
-#drawing stuff
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #drawing stuff
+        #-------------------------------------------------------------------------#
 
 
             #sets the pen to up
@@ -659,9 +632,9 @@ while play:
             undo()
 
 
-#-------------------------------------------------------------------------#
-#miscallaneous
-#-------------------------------------------------------------------------#
+        #-------------------------------------------------------------------------#
+        #miscallaneous
+        #-------------------------------------------------------------------------#
 
 
 
@@ -678,8 +651,12 @@ while play:
             execute()
                 
             #executes code in the specified file
-        if command in("filecode","fcode","fcd"):
+        elif command in("filecode","fcode","fcd"):
             filecode()
+            
+            #executes commands in the specified file
+        elif command in("filecommand","fcommand","fcmd"):
+            filecommand()
                 
             #ends the session
         elif command in("quit"):
@@ -688,9 +665,42 @@ while play:
             #prints if command is unrecognised
         else:
             print("Unknown command")
-    
+
     except Exception as e:
         print(e)
         print("you messed up somehow, type all required arguments")
 
-main()
+while play:
+    try:
+            #is where commands are input
+        rawinput = input("Command: ").lower()
+        empty = rawinput
+        if empty[-1] == " ":
+            empty = empty[0:-1]
+        if empty[0] == " ":
+            empty = empty[1:]
+
+        args = empty.split(",")
+        if len(args) == 1:
+            command = empty
+            empty = ""
+        elif len(args) == 2:
+            command,empty = empty.split(",")
+        elif len(args) == 3:
+            command,empty,empty2 = empty.split(",")
+        elif len(args) == 4:
+            command,empty,empty2,empty3 = empty.split(",")
+        elif len(args) == 5:
+            command,empty,empty2,empty3,empty4 = empty.split(",")
+        elif len(args) == 6:
+            command,empty,empty2,empty3,empty4,empty5 = empty.split(",")
+        elif len(args) == 7:
+            command,empty,empty2,empty3,empty4,empty5,empty6 = empty.split(",")
+        else:
+            print("Too many inputs")
+
+        do_command()
+        
+    except Exception as e:
+        print(e)
+        print("you messed up somehow, type all required arguments")
