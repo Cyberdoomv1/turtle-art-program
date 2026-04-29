@@ -881,6 +881,7 @@ while play:
         else:
             print("Too many inputs")
 
+        command = command.lower()
         do_command()
         
     except Exception as e:
