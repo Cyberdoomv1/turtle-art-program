@@ -18,7 +18,8 @@ fileexec = False
 
 
 
-def colour():
+def colour(empty):
+    empty = empty.lower()
     try:
         int(empty)
     except:
@@ -39,7 +40,8 @@ def colour():
     #        print("something went wrong")
     #        print(e)
 
-def fillcolour():
+def fillcolour(empty):
+    empty = empty.lower()
     try:
         turtle.fillcolor(empty)
         print("fillcolour has been set to",empty)
@@ -54,27 +56,31 @@ def endfill():
     turtle.end_fill()
     print("Fill ended")
 
-def backgroundcol():
+def backgroundcol(empty):
+    empty = empty.lower()
     try:
         turtle.bgcolor(empty)
         print("background colour has been set to", empty)
     except:
         print("unknown colour")
 
-def forward():
+def forward(empty):
     turtle.forward(float(empty))
 
-def left():
+def left(empty):
     turtle.left(float(empty))
     
-def right():
+def right(empty):
     turtle.right(float(empty))
     
-def setang():
+def backwards(empty)
+    turtle.back(float(empty))
+    
+def setang(empty):
     turtle.setheading((int(empty)-90)*-1)
     print("the turtles heading is",empty)
 
-def setpos():
+def setpos(empty,empty2):
     print("this will draw a line to that pos if pen is not up, type y to continue, n to exit")
     ans = input().lower()
     if ans in("y","yes","ye"):
@@ -99,7 +105,7 @@ def home():
     turtle.left(90)
     print("Turtle is at 0,0")
 
-def towards():
+def towards(empty,empty2):
     if empty2 == "":
         x = input("X-coordinate: ")
         y = input("Y-coordinate: ")
@@ -121,7 +127,8 @@ def getang():
     heading = turtle.heading()
     print("The turtles current heading is", heading - 90)
 
-def helpp():
+def helpp(empty):
+    empty = empty.lower()
     if empty == "":
         print("""This is just a list of commands, for info on what a command does type help and then the command.
 
@@ -282,7 +289,7 @@ capitalisation doesnt matter type your commands: *command* *amount*""")
 def getpos():
     print("Turtles pos is", turtle.pos())
 
-def distance():
+def distance(empty,empty2):
     if empty2 == "":
         x = input("X-coordinate: ")
         y = input("Y-coordinate: ")
@@ -308,14 +315,15 @@ def hide():
     turtle.hideturtle()
     print("Turtle is hidden")
 
-def cursor():
+def cursor(empty):
+    empty = empty.lower()
     try:
         turtle.shape(str(empty))
         print("The cursor has been set to a",empty)
     except:
         print("Unknown shape please retry")
 
-def speed():
+def speed(empty):
     turtle.speed(int(empty))
 
 
@@ -328,18 +336,18 @@ def pendown():
     print("Pen is down")
 
 
-def circle():
+def circle(empty):
     radius = int(empty)
     turtle.circle(radius)
 
 
-def arc():
+def arc(empty,empty2):
     radius = int(empty)
     degrees = int(empty2)
     turtle.circle(radius, degrees)
 
 
-def polygon():
+def polygon(empty,empty2,empty3):
     if empty3 == "":
         radius = int(empty)
         sides = int(empty2)
@@ -356,12 +364,13 @@ def clear():
     turtle.left(90)
     print("Screen is clear")
     
-def pensize():
+def pensize(empty):
     turtle.pensize(empty)
     print("The pen size has been set to", empty)
 
 
-def dot():
+def dot(empty,empty2):
+    empty2 = empty2.lower()
     turtle.dot(int(empty), str(empty2))
     print("dot drawn with radius", empty, "pixels in colour", empty2)
 
@@ -375,7 +384,7 @@ def dimensions():
     print("The dimensions of the screen are", turtle.window_width(), "by", turtle.window_height(), "pixels")
 
 
-def text():
+def text(empty,empty2,empty3,empty4,empty5,empty6):
     try:
         if empty2 == "":
             txt = empty
@@ -383,11 +392,13 @@ def text():
             print("text has been written")
         elif empty5 == "":
             txt = str(empty)
+            empty2 = empty2.lower()
             move = str(empty2)
             if move in("true"):
                 move = True
             else:
                 move = False
+            empty3 = empty3.lower()
             alignment = str(empty3)
             if alignment in("centre","center","cent","c"):
                 alignment = "center"
@@ -395,16 +406,19 @@ def text():
                 alignment = "left"
             elif alignment in("right","r"):
                 alignment = "right"
+            empty4 = empty4.lower()
             fontness = str(empty4)
             turtle.write(str(txt), move=move, align=alignment, font=fontness)
             print("text has been written")
         elif empty5 != "":
             txt = str(empty)
+            empty2 = empty2.lower()
             move = str(empty2)
             if move in("true"):
                 move = True
             else:
                 move = False
+            empty3 = empty3.lower()
             alignment = str(empty3)
             if alignment in("centre","center","cent","c"):
                 alignment = "center"
@@ -412,11 +426,13 @@ def text():
                 alignment = "left"
             elif alignment in("right","r"):
                 alignment = "right"
+            empty4 = empty4.lower()
             fontness = str(empty4)
             try:
                 height = int(empty5)
             except:
                 height = float(empty5)
+            empty6 = empty6.lower()
             special = str(empty6)
             turtle.write(str(txt), move=move, align=alignment, font=(fontness, height, special))
             print("text has been written")
@@ -425,7 +441,7 @@ def text():
         print(e)
 
 
-def execute():
+def execute(rawinput):
     if command == "execute":
         try:
             exec(rawinput[8:])
@@ -447,7 +463,7 @@ def execute():
     else:
         print("Unknown command")
 
-def filecode():
+def filecode(empty):
     try:
         fileexec = True
         file = open(empty, "r")
@@ -461,7 +477,7 @@ def filecode():
         print("bad file, may be typo or missing file")
         print(e)
         
-def filecommand():
+def filecommand(empty):
     try:
         file = open(empty,"r")
         for line in file:
@@ -484,11 +500,11 @@ def do_command():
 
             #sets colour
         if command in("c","colour","color","rgb"):
-            colour()
+            colour(empty)
             
             #sets fillcolour
         elif command in("fillcolour","fillcolor","fcolour","fcolor","fc"):
-            fillcolour()
+            fillcolour(empty)
             
             #starts the colour fill
         elif command in("sfill","startfill","sf"):
@@ -500,7 +516,7 @@ def do_command():
             
             #sets the background colour
         elif command in("bcolour","bacgroundcolour","bclr","bc"):
-            backgroundcol()
+            backgroundcol(empty)
 
 
 
@@ -514,35 +530,35 @@ def do_command():
             
             #moves forward
         elif command in("f","forward"):
-            forward()
+            forward(empty)
             
             #turns left
         elif command in("l","left"):
-            left()
+            left(empty)
             
             #turns right
         elif command in("r","right"):
-            right()
+            right(empty)
             
             #sets the turtles angle
         elif command in("setang","setangle","sa"):
-            setang()
+            setang(empty)
             
             #moves back
         elif command in("b","back","backwards"):
-            turtle.back(float(empty))
+            backwards()
             
             #sets the turtles position
         elif command in("setpos","setposition","sp"):
-            setpos()
+            setpos(empty,empty2)
             
             #sets turtles position to 0,0
-        elif command in("home"):
+        elif command in("home","home"):
             home()
             
             #points the turtle towards the specified coordinates
         elif command in("towards","twrds","pointto","point","pnt"):
-            towards()
+            towards(empty,empty2)
             
             
 
@@ -561,12 +577,163 @@ def do_command():
 
             #lists commands
         elif command in("h","help"):
-            helpp()
+            helpp(empty)
 
             #gives the turtles position
         elif command in("p","pos","getpos","gp"):
             getpos()
                     
+            #returns the distance to a specified point
+        elif command in("distance","dist","dis"):
+            distance(empty,empty2)
+
+
+
+
+
+
+        #-------------------------------------------------------------------------#
+        #turtle stuff
+        #-------------------------------------------------------------------------#
+
+
+
+            #shows the turtle
+        elif command in("show","show"):
+            show()
+            
+            #hides the turtle
+        elif command in("hide","hide"):
+            hide()
+
+            #sets the shape of the cursor
+        elif command in("turtleshape","cursor","setcursor"):
+            cursor(empty)
+            
+            #sets the speed of the turtle
+        elif command in("speed","setspeed","ss"):
+            speed(empty)
+
+
+
+
+        #-------------------------------------------------------------------------#
+        #drawing stuff
+        #-------------------------------------------------------------------------#
+
+
+            #sets the pen to up
+        elif command in("pup","penup","pu"):
+            penup()
+            
+            #sets the pen to down
+        elif command in("pdown","pendown","pd"):
+            pendown()
+
+            #draws a circle
+        elif command in("circle","circ","cir"):
+            circle(empty)
+            
+            #draws an arc
+        elif command in("arc","ar","a"):
+            arc(empty,empty2)
+            
+            #draws a regular polygon
+        elif command in("polygon","poly"):
+            polygon(empty,empty2,empty3)
+
+            #clears the screen
+        elif command in("clear","clearscreen"):
+            clear()
+
+
+            #changes pen size
+        elif command in("psize","pensize","ps"):
+            pensize(empty)
+            
+            #draws a dot
+        elif command in("dot","dot"):
+            dot(empty,empty2)
+
+            #undoes previous actions
+        elif command in("undo","un","und"):
+            undo()
+
+
+        #-------------------------------------------------------------------------#
+        #miscallaneous
+        #-------------------------------------------------------------------------#
+
+
+
+            #returns the dimentions of the screen
+        elif command in("dimension","dimensions","dim"):
+            dimensions()
+
+            #writes text
+        elif command in("write","text","txt"):
+            write(empty,empty2,empty3,empty4,empty5,empty6)
+
+            #executes entered code
+        elif command in("execute","exec","exe"):
+            execute(empty)
+                
+            #executes code in the specified file
+        elif command in("filecode","fcode","fcd"):
+            filecode(empty)
+            
+            #executes commands in the specified file
+        elif command in("filecommand","fcommand","fcmd"):
+            filecommand(empty)
+                
+            #ends the session
+        elif command in("quit","quit"):
+            quitt()
+            
+            #prints if command is unrecognised
+        else:
+            print("Unknown command")
+
+    except Exception as e:
+        print(e)
+        print("you messed up somehow, type all required arguments")
+
+while play:
+    try:
+            #is where commands are input
+        if fileexec == False:
+            rawinput = input("Command: ")
+        empty = rawinput
+        if empty[-1] == " ":
+            empty = empty[0:-1]
+        if empty[0] == " ":
+            empty = empty[1:]
+
+        args = empty.split(",")
+        if len(args) == 1:
+            command = empty
+            empty = ""
+        elif len(args) == 2:
+            command,empty = empty.split(",")
+        elif len(args) == 3:
+            command,empty,empty2 = empty.split(",")
+        elif len(args) == 4:
+            command,empty,empty2,empty3 = empty.split(",")
+        elif len(args) == 5:
+            command,empty,empty2,empty3,empty4 = empty.split(",")
+        elif len(args) == 6:
+            command,empty,empty2,empty3,empty4,empty5 = empty.split(",")
+        elif len(args) == 7:
+            command,empty,empty2,empty3,empty4,empty5,empty6 = empty.split(",")
+        else:
+            print("Too many inputs")
+        
+        command = command.lower()
+        do_command()
+        
+    except Exception as e:
+        print(e)
+        print("you messed up somehow, type all required arguments")
             #returns the distance to a specified point
         elif command in("distance","dist","dis"):
             distance()
