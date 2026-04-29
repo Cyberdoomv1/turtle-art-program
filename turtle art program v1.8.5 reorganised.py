@@ -73,7 +73,7 @@ def left(empty):
 def right(empty):
     turtle.right(float(empty))
     
-def backwards(empty)
+def backwards(empty):
     turtle.back(float(empty))
     
 def setang(empty):
