@@ -224,7 +224,6 @@ capitalisation doesnt matter type your commands: *command* *amount*""")
         print("format: arc,*radius*,*degrees*")
     elif empty in("polygon","poly","p"):
         print("The polygon command draws a regular polygon with the radius and num of sides provided")
-        print("WARNING THE POLY COMMAND DRAWS THE SHAPE RORATED 45 DEGREES TO THE LEFT OF THE TURTLE")
         print("format: poly,*radius*,*extent(360 degrees if not specified),*num of sides*")
     elif empty in("hide"):
         print("The hide command hides the turtle")
@@ -349,6 +348,7 @@ def arc(empty,empty2):
 
 
 def polygon(empty,empty2,empty3):
+    turtle.right(180/int(empty2))
     if empty3 == "":
         radius = int(empty)
         sides = int(empty2)
