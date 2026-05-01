@@ -1,4 +1,4 @@
-#v1.8.6 
+#v1.8.7
 #FCMD IS BROKEN DO NOT USE
 import turtle
 turtle.left(90)
@@ -22,28 +22,24 @@ fileexec = False
 def colour(empty):
     empty = empty.lower()
     try:
-        int(empty)
-    except:
-        empty = empty
-    if empty == str:
-        try:
-            turtle.color(empty)
-            print("Colour set to", empty)
-        except:
-            print("unknown colour")
-    else:
-        try:
-            turtle.colormode(255)
-            r = int(empty)
-            g = int(empty2)
-            b = int(empty3)
-            turtle.color(r,g,b)
-            print("colour has been set to RGB:",empty,empty2,empty3)
-            turtle.colormode(None)
+        turtle.color(empty)
+        print("Colour set to", empty)
+     except:
+        print("unknown colour")
+        
+def rgb(empty,empty2,empty3):
+    try:
+        turtle.colormode(255)
+        r = int(empty)
+        g = int(empty2)
+        b = int(empty3)
+        turtle.color(r,g,b)
+        print("colour has been set to RGB:",empty,empty2,empty3)
+        turtle.colormode(None)
             
-        except Exception as e:
-            print("something went wrong")
-            print(e)
+    except Exception as e:
+        print("something went wrong")
+        print(e)
 
 def fillcolour(empty):
     empty = empty.lower()
@@ -153,7 +149,7 @@ dot, circle/circ/cir, arc/ar/a, polygon/poly, clear/clearscreen, undo/und/un
 
 Colour:
 fillcolour/fillcolor/fc, c/colour/color, startfill/sfill/sf,
-endfill/efill/ef, backgroundcolour/bcolour/bclr/bc
+endfill/efill/ef, backgroundcolour/bcolour/bclr/bc, rgb
 
 Miscellaneous:
 h/help, quit, dimensions/dimension/dim, execute/exec/exe, file
@@ -287,6 +283,9 @@ capitalisation doesnt matter type your commands: *command* *amount*""")
     elif empty in("filecommand","fcommand","fcmd"):
         print("The filecommand command executes the command in the specified file, files must be in the same folder as this program")
         print("format: filecommand,*filename.txt*")
+    elif empty in("rgb","rgb"):
+        print("The rgb command set the colour of the turtle to the specified rgb values")
+        print("format: rgb,*red*,*green*,*blue*")
     else:
         print("That command is unrecognised, did you misspell it?")
 
@@ -506,6 +505,9 @@ def do_command(rawinput):
             #sets colour
         if command in("c","colour","color","rgb"):
             colour(empty)
+            
+        elif command in("rgb","rgb")
+            rgb(empty,empty2,empty3)
             
             #sets fillcolour
         elif command in("fillcolour","fillcolor","fcolour","fcolor","fc"):
