@@ -134,7 +134,7 @@ def helpp(empty):
     if empty == "":
         print("""This is just a list of commands, for info on what a command does type help and then the command.
 
-COMMAND FORMAT: *command* *value* OR *comand*,*value*
+COMMAND FORMAT: *comand*,*value*
 
 Movement:
 f/forward, b/back, setpos/setposition/sp, p/pos/getpos/gp, h/home, speed/setspeed/ss, distance/dist/dis
@@ -155,7 +155,7 @@ endfill/efill/ef, backgroundcolour/bcolour/bclr/bc, rgb
 Miscellaneous:
 h/help, quit, dimensions/dimension/dim, execute/exec/exe, filecode/fcode/fcd, filecommand/fcommand/fcmd
 
-capitalisation doesnt matter type your commands: *command* *amount*""")
+capitalisation doesnt matter type your commands: *command*,*amount*""")
     elif empty in("c","colour","color"):
         print("The colour command sets the colour that the turtle draws in")
         print("format: colour,*colour*")
