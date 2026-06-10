@@ -1,7 +1,7 @@
 #v1.9.1
-#FCMD FINALLY WORKS!
+#added guizero to add a GUI but its NON FUNCTIONAL
 import turtle
-import guizero as g
+import guizero
 art_program = g.App(title="controls")
 turtle.left(90)
 print("you control the turtle")
@@ -520,6 +520,18 @@ def show_var_boxes():
         empty6= g.TextBox(art_program)
     else:
         toggle_var_boxes = 0
+        instruction3.destroy()
+        instruction4.destroy()
+        instruction5.destroy()
+        instruction6.destroy()
+        instruction7.destroy()
+        instruction8.destroy()
+        empty.destroy()
+        empty2.destroy()
+        empty3.destroy()
+        empty4.destroy()
+        empty5.destroy()
+        empty6.destroy()
     art_program.display()
     
 def do_command(rawinput,command,empty,empty2,empty3,empty4,empty5,empty6):
