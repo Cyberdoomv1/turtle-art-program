@@ -1,7 +1,7 @@
 #v1.9.1
 #added guizero to add a GUI but its NON FUNCTIONAL
 import turtle
-import guizero
+import guizero as g
 art_program = g.App(title="controls")
 turtle.left(90)
 print("you control the turtle")
