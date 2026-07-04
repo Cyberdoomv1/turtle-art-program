@@ -556,7 +556,7 @@ def do_command(rawinput,command,empty,empty2,empty3,empty4,empty5,empty6):
             
             #moves back
         elif command in("b","back","backwards"):
-            backwards()
+            backwards(empty)
             
             #sets the turtles position
         elif command in("setpos","setposition","sp"):
