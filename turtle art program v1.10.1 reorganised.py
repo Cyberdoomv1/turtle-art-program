@@ -174,7 +174,7 @@ fillcolour/fillcolor/fc, c/colour/color, startfill/sfill/sf,
 endfill/efill/ef, backgroundcolour/bcolour/bclr/bc, rgb
 
 Miscellaneous:
-h/help, quit, dimensions/dimension/dim, execute/exec/exe, filecode/fcode/fcd, filecommand/fcommand/fcmd, save/s
+h/help, quit, dimensions/dimension/dim, execute/exec/exe, filecode/fcode/fcd, filecommand/fcommand/fcmd, save
 
 capitalisation doesnt matter type your commands: *command*,*amount*""")
     elif empty in("c","colour","color"):
