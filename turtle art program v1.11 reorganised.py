@@ -312,8 +312,8 @@ capitalisation doesnt matter type your commands: *command*,*amount*""")
         print("The save command saves your inputs to the specified file every time you input a command, you must specify the start and end of when you save")
         print("format: save,*true/false*")
     elif empty in("centrecircle","ccircle","ccir"):
-	print("The centre circle command draws a circle of the specified radius with the turtle as the centre of it instead of the turtle being on the edge")
-	print("format: ccir,*radius*")
+        print("The centre circle command draws a circle of the specified radius with the turtle as the centre of it instead of the turtle being on the edge")
+        print("format: ccir,*radius*")
     else:
         print("That command is unrecognised, did you misspell it?")
 
@@ -372,15 +372,20 @@ def circle(empty):
     turtle.circle(radius)
 
 def ccircle(empty):
-    turtle.penup()
-    turtle.forwards(empty)
-    turtle.left(90)
-    turtle.pendown()
-    turtle.circle(empty)
-    turtle.penup()
-    turtle.right(90)
-    turtle.back(empty)
-    turtle.pendown()
+    try:
+        empty = float(empty)
+        turtle.penup()
+        turtle.forward(empty)
+        turtle.left(90)
+        turtle.pendown()
+        turtle.circle(empty)
+        turtle.penup()
+        turtle.right(90)
+        turtle.back(empty)
+        turtle.pendown()
+    except Exception as e:
+        print(e)
+        print("needs to be a number")
 
 def arc(empty,empty2):
     radius = int(empty)
@@ -730,10 +735,11 @@ def do_command(rawinput,command,empty,empty2,empty3,empty4,empty5,empty6,saving,
         elif command in("pdown","pendown","pd"):
             pendown()
 
-            #draws a circle
+            #draws a circle with the turtle on the edge
         elif command in("circle","circ","cir"):
             circle(empty)
-
+            
+            #draws a circle with the turtle as the center
         elif command in("centrecircle","ccircle","ccir"):
             ccircle(empty)
             
